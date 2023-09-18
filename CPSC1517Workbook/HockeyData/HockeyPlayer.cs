@@ -1,4 +1,6 @@
-﻿namespace Hockey.Data
+﻿using Utils;
+
+namespace Hockey.Data
 {
     /// <summary>
     /// An instance of this class will hold data about a hockey player.
@@ -23,7 +25,7 @@
 
             set
             {
-                if (String.IsNullOrWhiteSpace(value))
+                if (Utilities.IsNullEmptyOrWhitespace(value))
                 {
                     throw new ArgumentException("Birthplace cannot be null or empty.");
                 }
@@ -40,7 +42,7 @@
 
             set
             {
-                if (String.IsNullOrWhiteSpace(value))
+                if (Utilities.IsNullEmptyOrWhitespace(value))
                 {
                     throw new ArgumentException("First name cannot be null or empty.");
                 }
@@ -57,7 +59,7 @@
 
             set
             {
-                if (String.IsNullOrWhiteSpace(value))
+                if (Utilities.IsNullEmptyOrWhitespace(value))
                 {
                     throw new ArgumentException("Last name cannot be null or empty.");
                 }
@@ -75,12 +77,30 @@
 
             set
             {
-                if (value <= 0)
+                if (Utilities.IsZeroOrNegative(value))
                 {
                     throw new ArgumentException("Height must be positive.");
                 }
 
                 _heightInInches = value;
+            }
+        }
+
+        public int WeightInPounds
+        {
+            get
+            {
+                return _weightInPounds;
+            }
+
+            set
+            {
+                if (!Utilities.isPositive(value)) //for illustrative purposes, is another way of showing the zero or neg
+                {
+                    throw new ArgumentException("Weight must be positive.");
+                }
+
+                _weightInPounds = value;
             }
         }
 
@@ -93,7 +113,12 @@
 
             set
             {
-                //TODO: update validation (we'll come back to Wednesday)
+                //can't be in the future
+                if (Utilities.IsInTheFuture(value))
+                {
+                    throw new ArgumentException("Date must not be in the future.");
+                }
+
                 _dateOfBirth = value;
             }
         }
@@ -116,14 +141,16 @@
         }
 
         // Greedy constructor
-        public HockeyPlayer(string firstName, string lastName, string birthPlace, DateOnly birthDate, int weightInPounds, int heightInInches, Position position = Position.Center, Shot shot = Shot.Left)
+        public HockeyPlayer(string firstName, string lastName, string birthPlace, DateOnly dateOfBirth, int weightInPounds, int heightInInches, Position position = Position.Center, Shot shot = Shot.Left)
         {
-            // TODO: implement and use the remaining properties
             BirthPlace = birthPlace;
             FirstName = firstName;
             LastName = lastName;
             Shot = shot;
             Position = position;
+            DateOfBirth = dateOfBirth;
+            WeightInPounds = weightInPounds;
+            HeightInInches = heightInInches;
         }
     }
 }
