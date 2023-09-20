@@ -23,7 +23,7 @@ namespace Hockey.Data
                 return _birthPlace;
             }
 
-            set
+            private set
             {
                 if (Utilities.IsNullEmptyOrWhitespace(value))
                 {
@@ -40,7 +40,7 @@ namespace Hockey.Data
                 return _firstName;
             }
 
-            set
+            private set
             {
                 if (Utilities.IsNullEmptyOrWhitespace(value))
                 {
@@ -57,7 +57,7 @@ namespace Hockey.Data
                 return _lastName;
             }
 
-            set
+            private set
             {
                 if (Utilities.IsNullEmptyOrWhitespace(value))
                 {
@@ -75,7 +75,7 @@ namespace Hockey.Data
                 return _heightInInches;
             }
 
-            set
+            private set
             {
                 if (Utilities.IsZeroOrNegative(value))
                 {
@@ -93,7 +93,7 @@ namespace Hockey.Data
                 return _weightInPounds;
             }
 
-            set
+            private set
             {
                 if (!Utilities.isPositive(value)) //for illustrative purposes, is another way of showing the zero or neg
                 {
@@ -111,7 +111,11 @@ namespace Hockey.Data
                 return _dateOfBirth;
             }
 
-            set
+            // set
+            // private set - in the constructor or any other public members/methods it can be set
+            // init - can ONLY be initialized and never changed later
+
+            private set
             {
                 //can't be in the future
                 if (Utilities.IsInTheFuture(value))
@@ -127,19 +131,6 @@ namespace Hockey.Data
 
         public Shot Shot { get; set; }
 
-        // Default constructor
-        public HockeyPlayer()
-        {
-            _firstName = string.Empty;
-            _lastName = string.Empty;
-            _birthPlace = string.Empty;
-            _dateOfBirth = new DateOnly();
-            _weightInPounds = 0;
-            _heightInInches = 0;
-            Position = Position.Center;
-            Shot = Shot.Left;
-        }
-
         // Greedy constructor
         public HockeyPlayer(string firstName, string lastName, string birthPlace, DateOnly dateOfBirth, int weightInPounds, int heightInInches, Position position = Position.Center, Shot shot = Shot.Left)
         {
@@ -151,6 +142,12 @@ namespace Hockey.Data
             DateOfBirth = dateOfBirth;
             WeightInPounds = weightInPounds;
             HeightInInches = heightInInches;
+        }
+
+        // Override ToString
+        public override string ToString() //so when you call Console.WriteLine(player1) for example, it returns this string for that object
+        {
+            return $"{FirstName} {LastName}";
         }
     }
 }

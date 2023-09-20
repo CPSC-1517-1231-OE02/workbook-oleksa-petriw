@@ -5,11 +5,13 @@ VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HockeyData", "HockeyData\HockeyData.csproj", "{DDD000BC-38F2-4480-AAC5-22097917F057}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities", "Utilities\Utilities.csproj", "{64C1DC14-15A2-4ED0-BA0E-ACA33A4673F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Utilities", "Utilities\Utilities.csproj", "{64C1DC14-15A2-4ED0-BA0E-ACA33A4673F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HockeyConsoleApp", "HockeyConsoleApp\HockeyConsoleApp.csproj", "{6C12B97A-0363-47C0-A717-10E77BB0C193}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HockeyConsoleApp", "HockeyConsoleApp\HockeyConsoleApp.csproj", "{6C12B97A-0363-47C0-A717-10E77BB0C193}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HockeyTestProject", "HockeyTestProject\HockeyTestProject.csproj", "{FA6429CC-DFD8-4C01-8479-A8B6698AE4A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HockeyTestProject", "HockeyTestProject\HockeyTestProject.csproj", "{FA6429CC-DFD8-4C01-8479-A8B6698AE4A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtilitiesTestProject", "UtilitiesTestProject\UtilitiesTestProject.csproj", "{1EFD4D07-F666-4100-A006-590F5007CE46}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{FA6429CC-DFD8-4C01-8479-A8B6698AE4A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA6429CC-DFD8-4C01-8479-A8B6698AE4A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA6429CC-DFD8-4C01-8479-A8B6698AE4A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EFD4D07-F666-4100-A006-590F5007CE46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EFD4D07-F666-4100-A006-590F5007CE46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EFD4D07-F666-4100-A006-590F5007CE46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EFD4D07-F666-4100-A006-590F5007CE46}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

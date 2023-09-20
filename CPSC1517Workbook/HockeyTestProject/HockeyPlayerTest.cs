@@ -8,6 +8,12 @@ namespace Hockey.Test
         public HockeyPlayer GenerateTestPlayer()
         {
             return new HockeyPlayer();
+
+            //int[] nums = { 1, 2, 3 };
+
+            //string x = "" + nums;
+
+            //it's common to have a ToString method to have all these weird data types be strings.
         }
 
         [Fact]

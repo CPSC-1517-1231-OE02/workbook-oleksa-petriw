@@ -25,7 +25,11 @@
             //return value <= 0 ? true : false;
         }
 
+        //public static bool isPositive(int value) => value > 0 ? true : false;
         public static bool isPositive(int value) => value > 0;
+        public static bool isPositive(double value) => value > 0.0; //0.0 is a double by default
+        public static bool isPositive(decimal value) => value > 0.0m; //m forces it to be decimal
+
         public static bool IsNullEmptyOrWhitespace(string value)
         {
             return String.IsNullOrWhiteSpace(value);
