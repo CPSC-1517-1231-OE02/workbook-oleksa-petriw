@@ -14,6 +14,7 @@ namespace Hockey.Data
         private int _heightInInches;
         private int _weightInPounds;
         private DateOnly _dateOfBirth;
+        private int _jerseyNumber;
 
         // Properties
         public string BirthPlace
@@ -143,6 +144,24 @@ namespace Hockey.Data
             WeightInPounds = weightInPounds;
             HeightInInches = heightInInches;
         }
+
+        public int JerseyNumber
+        {
+            get
+            {
+                return _jerseyNumber;
+            }
+
+            set
+            {
+                if (value < 1 || value > 98)
+                {
+                    throw new ArgumentOutOfRangeException("Jersey number must be between 1 and 98.", new ArgumentException());
+                }
+                _jerseyNumber = value;
+            }
+        }
+        public int Age => (DateOnly.FromDateTime(DateTime.Now).DayNumber - DateOfBirth.DayNumber) / 365;
 
         // Override ToString
         public override string ToString() //so when you call Console.WriteLine(player1) for example, it returns this string for that object
