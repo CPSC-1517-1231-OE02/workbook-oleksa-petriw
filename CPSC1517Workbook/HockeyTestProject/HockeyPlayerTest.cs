@@ -34,7 +34,7 @@ namespace Hockey.Test
         [InlineData(99)]
         public void HockeyPlayer_JerseyNumber_BadSetThrows(int value)
         {
-            HockeyPlayer player = CreateTestHockeyPlayer(); ;
+            HockeyPlayer player = CreateTestHockeyPlayer();
 
             Action act = () => player.JerseyNumber = value;
 
