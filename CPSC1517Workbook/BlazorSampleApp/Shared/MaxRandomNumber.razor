@@ -4,36 +4,65 @@
 
 <p> This page will render a random number between 1 and a max value.</p>
 
-<p>@feedbackMessage</p>
+@if (!string.IsNullOrWhiteSpace(feedbackMessage))
+{
+    <div class="alert @(isError ? "alert-danger": "alert-info")">
+        @feedbackMessage
+    </div>
+}
 
 <fieldset>
-    <div>
+    @*
+        class mb-3 is bootstrap, and sets the margin-bottom to 16px
+        https://getbootstrap.com/docs/5.3/utilities/spacing/#notation
+    *@
+    <div class="mb-3">
         <label for="maxNumber">Max Number Value</label>
-        <input type="text" id="maxNumber" name="maxNumber" @bind-value="@MaxNumber"/>
+        <input type="text" id="maxNumber" name="maxNumber" @bind-value="@maxNumber" />
     </div>
-    <div>
-        <button onclick="@GenerateRandomNumber">Generate Number</button>
+    <div class="mb-3">
+        @*
+            btn and btn-outline are bootstrap
+            https://getbootstrap.com/docs/5.3/components/buttons/
+        *@
+        <button type="button" class="btn btn-primary" onclick="@GenerateRandomNumber">Generate Number</button>
     </div>
-    <div>
-        <button onclick="@ClearMessage">Clear Output</button>
+    <div class="mb-3">
+        <button type="button" class="btn btn-secondary" onclick="@ClearMessage">Clear Output</button>
     </div>
 </fieldset>
 
 @code {
-    private int MaxNumber { get; set; }
-
+    // Can use properties within @code blocks
+    private int maxNumber { get; set; }
+    private bool isError { get; set; }
     private int randomNumber;
-
     private string? feedbackMessage;
 
+    /// <summary>
+    /// Generates a random number between 1 and the maxNumber input value.
+    /// </summary>
     private void GenerateRandomNumber()
     {
-        randomNumber = Random.Shared.Next(1, MaxNumber + 1);
-        feedbackMessage = $"Your random number is {randomNumber}";
+        if (maxNumber < 1)
+        {
+            isError = true;
+            feedbackMessage = $"Your number {maxNumber} is invalid. It must be 1 or higher.";
+        }
+        else
+        {
+            isError = false;
+            randomNumber = Random.Shared.Next(1, maxNumber + 1);
+            feedbackMessage = $"Your random number is {randomNumber}";
+        }
     }
 
+    /// <summary>
+    /// Sets the feedbackMessage to null
+    /// </summary>
     private void ClearMessage()
     {
+        isError = false;
         feedbackMessage = null;
     }
 }

@@ -3,6 +3,6 @@
     public enum Shot
     {
         Left = 1,
-        Right
+        Right,
     }
 }

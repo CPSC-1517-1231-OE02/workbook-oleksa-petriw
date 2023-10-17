@@ -6,4 +6,16 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Remove="Shared\LottoQuickPick.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Shared\LottoQuickPick.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HockeyData\HockeyData.csproj" />
+  </ItemGroup>
+
 </Project>
