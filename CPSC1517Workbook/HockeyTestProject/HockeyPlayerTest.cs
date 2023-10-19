@@ -10,7 +10,7 @@ namespace Hockey.Test
         // Constants for test HockeyPlayer
         const string FirstName = "Connor";
         const string LastName = "Brown";
-        const string BirthPlace = "Toronto, ON, CAN";
+        const string BirthPlace = "Toronto-ON-CAN";
         static readonly DateOnly DateOfBirth = new DateOnly(1994, 01, 14);
         const int HeightInInches = 72;
         const int WeightInPounds = 188;
@@ -203,6 +203,49 @@ namespace Hockey.Test
 
             act.Should().Throw<InvalidDataException>().WithMessage("Incorrect number of fieds.");
 
+        }
+
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData(" ")]
+        public void HockeyPlayer_Parse_ThrowsForNullEmptyOrWhitespace(string line)
+        {
+            Action act = () => HockeyPlayer.Parse(line);
+
+            act.Should().Throw<ArgumentNullException>().WithMessage("Line cannot be null or empty.");
+        }
+
+        [Fact]
+        public void HockeyPlayer_Parse_ThrowsForInvalidNumberOfFields()
+        {
+            string line = "one";
+
+            Action act = () => HockeyPlayer.Parse(line);
+
+            act.Should().Throw<InvalidDataException>().WithMessage("Incorrect number of fields.");
+        }
+
+        [Fact]
+        public void HockeyPlayer_Parse_ThrowsForFormatError()
+        {
+            string line = "one,two,three,four,five,six,seven,eight,nine";
+
+            Action act = () => HockeyPlayer.Parse(line);
+
+            act.Should().Throw<FormatException>().WithMessage("*Error parsing line*");
+        }
+
+        [Fact]
+        public void HockeyPlayer_TryParse_ParsesCorrectly()
+        {
+            HockeyPlayer? actual = null;
+            bool result;
+
+            result = HockeyPlayer.TryParse(ToStringValue, out actual);
+
+            result.Should().BeTrue();
+            actual.Should().NotBeNull();
         }
     }
 }

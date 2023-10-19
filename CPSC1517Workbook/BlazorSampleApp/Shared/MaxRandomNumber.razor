@@ -6,7 +6,7 @@
 
 @if (!string.IsNullOrWhiteSpace(feedbackMessage))
 {
-    <div class="alert @(isError ? "alert-danger": "alert-info")">
+    <div class="alert @(IsError ? "alert-danger": "alert-info")">
         @feedbackMessage
     </div>
 }
@@ -18,7 +18,7 @@
     *@
     <div class="mb-3">
         <label for="maxNumber">Max Number Value</label>
-        <input type="text" id="maxNumber" name="maxNumber" @bind-value="@maxNumber" />
+        <input type="text" id="maxNumber" name="maxNumber" @bind-value="@MaxNumber" />
     </div>
     <div class="mb-3">
         @*
@@ -34,8 +34,8 @@
 
 @code {
     // Can use properties within @code blocks
-    private int maxNumber { get; set; }
-    private bool isError { get; set; }
+    private int MaxNumber { get; set; }
+    private bool IsError { get; set; }
     private int randomNumber;
     private string? feedbackMessage;
 
@@ -44,15 +44,15 @@
     /// </summary>
     private void GenerateRandomNumber()
     {
-        if (maxNumber < 1)
+        if (MaxNumber < 1)
         {
-            isError = true;
-            feedbackMessage = $"Your number {maxNumber} is invalid. It must be 1 or higher.";
+            IsError = true;
+            feedbackMessage = $"Your number {MaxNumber} is invalid. It must be 1 or higher.";
         }
         else
         {
-            isError = false;
-            randomNumber = Random.Shared.Next(1, maxNumber + 1);
+            IsError = false;
+            randomNumber = Random.Shared.Next(1, MaxNumber + 1);
             feedbackMessage = $"Your random number is {randomNumber}";
         }
     }
@@ -62,7 +62,7 @@
     /// </summary>
     private void ClearMessage()
     {
-        isError = false;
+        IsError = false;
         feedbackMessage = null;
     }
 }
