@@ -1,11 +1,11 @@
 ﻿using WestWindSystem.DAL;
 
-var db = new WestWindContext();
+//var db = new WestWindContext();
 
-var countCustomers = db.Customers.Count();
+//var countCustomers = db.Customers.Count();
 
-Console.WriteLine($"There are {countCustomers} customers in the db");
+//Console.WriteLine($"There are {countCustomers} customers in the db");
 
-var customer = db.Customers.FirstOrDefault();
+//var customer = db.Customers.FirstOrDefault();
 
-Console.WriteLine($"The first customer is {customer.ContactName}");
+//Console.WriteLine($"The first customer is {customer.ContactName}");

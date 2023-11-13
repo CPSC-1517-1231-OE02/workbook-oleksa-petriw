@@ -6,18 +6,15 @@ using WestWindWebApp.Data;
 using WestWindSystem;
 using Microsoft.EntityFrameworkCore;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
-//builder.Services.WWBackEndDependencies(options =>
-    //options.UseSqlServer("Server=.\\SQLEXPRESS;Database=WestWind;TrustServerCertificate=True;Trusted_Connection=true")
+//builder.Services.WWBackEndDependencies(options => 
+//options.UseSqlServer("Server=.\\SQLEXPRESS;Database=WestWind;TrustServerCertificate=True;Trusted_Connection=true")
 //);
 
-//using the connection string from the json file instead of the above
 var connectionString = builder.Configuration.GetConnectionString("WWDB");
 
-//substituting it in to the original wwbackenddependencies code from above
-builder.Services.WWBackEndDependencies(options =>
+builder.Services.WWBackEndDependencies(options => 
     options.UseSqlServer(connectionString)
 );
 
